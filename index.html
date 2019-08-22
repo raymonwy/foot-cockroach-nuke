@@ -25,6 +25,7 @@ function reset() {
                     document.getElementById("computerScore").innerHTML = "Computer Score: " + computerScore;
                     document.getElementById("playerScore").innerHTML = "Your Score: " + playerScore;
                     document.getElementById("Winner").innerHTML = " ";
+                    document.getElementById("play").style.display ="inline-block";
 }
 function computerPlay(){
                 
@@ -99,10 +100,12 @@ function computerPlay(){
             function wins(){
                 if(playerScore == 3){
                     document.getElementById("Winner").innerHTML = " You Won!" ;
-                    document.getElementById("play").innerHTML = " ";
+                    document.getElementById("play").style.display ="none";
+                    //document.getElementById("play").innerHTML = " ";
                 }
                 if(computerScore == 3){
                     document.getElementById("Winner").innerHTML = " Computer Wins!"; 
+                    document.getElementById("play").style.display ="none";
                 }
             }
            
