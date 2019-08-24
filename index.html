@@ -3,7 +3,7 @@
     <head>
     
     </head>
-<body align =  "center">
+<body align =  "center" onlick ="noChoice()" >
 
 <h2>5 rounds of Foot, Cockroach, Nuke!!!!</h2>
 
@@ -17,10 +17,12 @@ var set = ["Cockroach","Foot", "Nuke"];
     var round = 0;
     var computerScore = 0;
     var playerScore = 0;
+    var playerSelection = " ";
 function reset() {
      round = 0;
     computerScore = 0;
     playerScore = 0;
+    noChoice();
      document.getElementById("Round").innerHTML = "Round: " + round; 
                     document.getElementById("computerScore").innerHTML = "Computer Score: " + computerScore;
                     document.getElementById("playerScore").innerHTML = "Your Score: " + playerScore;
@@ -32,15 +34,24 @@ function computerPlay(){
                 const num = Math.floor(Math.random()*3);
                 return set[num];
             }
+           
+function roachChoice(){
+    playerSelection = "Cockroach";
+}
+
+function footChoice(){
+    playerSelection = "Foot";
+}
+
+function nukeChoice(){
+    playerSelection = "Nuke";
+}
+
+function noChoice(){
+    playerSelection = " ";
+}
 
             function playRound(){
-                
-                var playerSelection = prompt("Cockroach, Nuke, or Foot");
-
-            while( set.indexOf(playerSelection) == -1){
-
-                playerSelection = prompt(" Wrong Selection, \n Cockroach, Nuke, or Foot");
-            }
             
             const computerSelection = computerPlay();  
 
@@ -82,6 +93,11 @@ function computerPlay(){
 
             function game(){
         
+                if(playerSelection == " ")
+                {
+                    alert("Select an image");
+                    return;
+                }
                     var score = playRound();
                     document.getElementById("Winner").innerHTML = "";
                     if( score > 0)
@@ -113,17 +129,17 @@ function computerPlay(){
     <p >
      
         <div id = "picture choices" >
-            <image src = "nuke.jpeg" style =" height: 10%; width :10% ;margin:15px;" ></image>
-            <image src = "foot.jpeg" style =" height: 7.3%; width :7.3%; margin:15px;"></image>
-            <image src = "cockroach.jpeg" style =" height: 10%; width :10%; margin:15px;"></image>
+            <input type="image" src = "nuke.jpeg"  onclick ="footChoice()" style =" height: 10%; width :10% ;margin:15px; padding:3px;" ></image>
+            <input type="image" src = "foot.jpeg"  onclick ="nukeChoice()" style =" height: 7.3%; width :7.3%; margin:15px; padding:3px;"></image>
+            <input type="image" src = "cockroach.jpeg"  onclick ="roachChoice()" style =" height: 10%; width :10%; margin:15px; padding:3px;"></image>
             
         </div>   
         
-        <div id = "play" style = "display: inline-block ; margin: 20px 0 ">
-            <button onclick = "game()" id = "buttons"> Play </button>  
+        <div id = "play" style = "display: inline-block ; margin: 1%; ">
+            <button onclick = "game()" id = "buttons" style = "height:130%; width:130%;"> Play </button>  
         </div>
-        <div id = "reset" style = "display: inline-block">
-            <button onclick = "reset()" id = "reset button"> Reset </button>
+        <div id = "reset" style = "display: inline-block" >
+            <button onclick = "reset()" id = "reset button" style = "height:130%; width:130%;"> Reset </button>
         </div>
     </p>
 </body>
